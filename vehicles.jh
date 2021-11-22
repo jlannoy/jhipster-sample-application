@@ -1,0 +1,24 @@
+entity Vehicle {
+	name String,
+	plate String,
+}
+
+entity Task {
+	date Instant,
+    title String,
+	amount Long
+}
+
+relationship OneToMany {
+	Vehicle to Task{vehicle},
+}
+
+// Set pagination options
+paginate Task with infinite-scroll
+paginate Vehicle with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Vehicle, Task
